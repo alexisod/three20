@@ -32,6 +32,35 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation TTTableHeaderView
 
+//alexiso
+- (id)initWithTitleForGroup:(NSString*)title {
+	if (self = [super init]) {
+		self.backgroundColor = [UIColor clearColor];
+		self.style = TTSTYLE(tableHeader);
+		
+		_label = [[UILabel alloc] init];
+		_label.text = title;
+		_label.backgroundColor = [UIColor clearColor];
+		//DNF SET THIS FOR GROUP MODE AS tableHeaderGroupedTextColor etc
+		_label.textColor = TTSTYLEVAR(tableHeaderGroupedTextColor)
+		? TTSTYLEVAR(tableHeaderGroupedTextColor)
+		: TTSTYLEVAR(linkTextColor);
+		_label.shadowColor = TTSTYLEVAR(tableHeaderGroupedShadowColor)
+		? TTSTYLEVAR(tableHeaderGroupedShadowColor)
+		: [UIColor clearColor];
+		_label.shadowOffset = CGSizeMake(0, -1);
+		_label.font = TTSTYLEVAR(tableHeaderGroupedFont);
+		//_label.contentMode=UIViewContentModeScaleToFill;
+		//_label.numberOfLines = 1;
+		//_label.adjustsFontSizeToFitWidth=YES;
+		
+		//_label.minimumFontSize = 8.0f;
+		[self addSubview:_label];
+	}
+	return self;
+	
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithTitle:(NSString*)title {

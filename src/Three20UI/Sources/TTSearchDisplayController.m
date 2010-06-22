@@ -111,7 +111,7 @@ static const NSTimeInterval kPauseInterval = 0.4;
   }
 //  if (!self.searchContentsController.navigationController) {
 //    [UIView beginAnimations:nil context:nil];
-//    self.searchBar.superview.top -= self.searchBar.screenY - TTStatusHeight();
+//    self.searchBar.superview.top -= self.searchBar.ttScreenY - TTStatusHeight();
 //    [UIView commitAnimations];
 //  }
 }

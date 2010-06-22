@@ -54,6 +54,8 @@ static const CGFloat kMarginY = 6;
 
 @synthesize delegate = _delegate;
 
+//alexiso
+@synthesize innerView=_innerView;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -141,12 +143,13 @@ static const CGFloat kMarginY = 6;
   _originalStatusBarStyle = app.statusBarStyle;
   _originalStatusBarHidden = app.statusBarHidden;
   if (!_originalStatusBarHidden) {
+	    //alexiso: I dont want this to change!
 #if __IPHONE_3_2 && __IPHONE_3_2 <= __IPHONE_OS_VERSION_MAX_ALLOWED
-    [app setStatusBarHidden:NO withAnimation:YES];
+    //[app setStatusBarHidden:NO withAnimation:YES];
 #else
-		[app setStatusBarHidden:NO animated:YES];
+	//	[app setStatusBarHidden:NO animated:YES];
 #endif
-    [app setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
+   // [app setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
   }
   [_textView becomeFirstResponder];
 }
@@ -484,6 +487,11 @@ static const CGFloat kMarginY = 6;
     self.view;
   }
   return _navigationBar;
+}
+
+//alexiso
+- (UIView*)innerView {
+	return _innerView;
 }
 
 

@@ -332,5 +332,8 @@ static const CGFloat kCancelHighlightThreshold = 4;
   }
 }
 
+//alexiso
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
+}
 
 @end

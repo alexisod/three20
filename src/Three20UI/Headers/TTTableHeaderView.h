@@ -22,5 +22,6 @@
 }
 
 - (id)initWithTitle:(NSString*)title;
+- (id)initWithTitleForGroup:(NSString*)title;
 
 @end

@@ -266,8 +266,8 @@ static const CGFloat kBannerViewHeight = 22;
     tableView.highlightedLabel = nil;
     tableView.showShadows = _showTableShadows;
   }
-
-  [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
+	//alexiso changed animated attribute from NO to YES (maybe we could pass on the animated param as we receive it here?)
+	[_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
 }
 
 
@@ -566,7 +566,8 @@ static const CGFloat kBannerViewHeight = 22;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)model:(id<TTModel>)model didDeleteObject:(id)object atIndexPath:(NSIndexPath*)indexPath {
+//alexiso: rename from didDeleteObject to deleteRowsAtIndexPaths??
+- (void)model:(id<TTModel>)model deleteRowsAtIndexPaths:(id)object atIndexPath:(NSIndexPath*)indexPath {
   if (model == _model) {
     if (_isViewAppearing && _flags.isShowingModel) {
       if ([_dataSource respondsToSelector:@selector(tableView:willRemoveObject:atIndexPath:)]) {

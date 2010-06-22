@@ -836,6 +836,26 @@
   return nil;
 }
 
+#pragma mark alexiso
+//alexiso:start
+- (UIColor*)tableHeaderGroupedTextColor {
+	return nil;
+}
+
+- (UIColor*)tableHeaderGroupedShadowColor {
+	return nil;
+}
+
+- (UIColor*)tableHeaderGroupedTintColor {
+	return nil;
+}
+
+- (UIColor*)tableViewBackgroundColor{
+	return [UIColor groupTableViewBackgroundColor];
+}
+
+//alexiso:end
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////

@@ -224,7 +224,9 @@ static TTURLRequestQueue* gMainQueue = nil;
               fromDisk:!_suspended && (request.cachePolicy & TTURLRequestCachePolicyDisk)
               data:&data error:&error timestamp:&timestamp]) {
       request.isLoading = NO;
-
+	  //alexiso 
+	  request.respondedFromCache = YES; //this was further down but i need to know if the response came from cache while I process the response, so I moved it here
+		
       if (!error) {
         error = [request.response request:request processResponse:nil data:data];
       }
@@ -237,7 +239,7 @@ static TTURLRequestQueue* gMainQueue = nil;
         }
       } else {
         request.timestamp = timestamp ? timestamp : [NSDate date];
-        request.respondedFromCache = YES;
+        //request.respondedFromCache = YES;
 
         for (id<TTURLRequestDelegate> delegate in request.delegates) {
           if ([delegate respondsToSelector:@selector(requestDidFinishLoad:)]) {

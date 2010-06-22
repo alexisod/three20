@@ -43,6 +43,8 @@
 // Core
 #import "Three20Core/TTCorePreprocessorMacros.h"
 
+//alexiso
+#import "Three20UICommon/TTGlobalUICommon.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -103,6 +105,49 @@
       }
     }
   }
+	//alexiso: start
+	//the code above created some strange shadows so we decided to use the one below.
+	//it should probably go in TTTableHeaderView but changes are there is some function in there that messes the display
+	//so it's safer to leave here for the time being
+	if (1==1 && (tableView.style == UITableViewStyleGrouped )) {
+		NSString* sectionTitle = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
+		if (sectionTitle == nil || !(sectionTitle.length)) {
+			return nil;
+		}
+		
+		// Create label with section title
+		UILabel *label = [[[UILabel alloc] init] autorelease];
+		label.frame = CGRectMake(20, 6, 300, 30);
+		label.backgroundColor = [UIColor clearColor];
+		/*
+		 label.textColor = [UIColor colorWithHue:(136.0/360.0)  // Slightly bluish green
+		 saturation:1.0
+		 brightness:0.60
+		 alpha:1.0];
+		 */
+		label.textColor = TTSTYLEVAR(tableHeaderGroupedTextColor)
+		? TTSTYLEVAR(tableHeaderGroupedTextColor)
+		: TTSTYLEVAR(linkTextColor);		
+		
+		//label.shadowColor = [UIColor whiteColor];
+		label.shadowColor = TTSTYLEVAR(tableHeaderGroupedShadowColor)
+		? TTSTYLEVAR(tableHeaderGroupedShadowColor)
+		: [UIColor clearColor];
+		
+		
+		label.shadowOffset = CGSizeMake(0.0, 1.0);
+		label.font = TTSTYLEVAR(tableHeaderGroupedFont);
+		label.text = sectionTitle;
+		
+		// Create header view and add label as a subview
+		UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+		[view autorelease];
+		[view addSubview:label];
+		
+		return view;
+		
+	}	
+	//alexiso: end	
   return nil;
 }
 
@@ -229,6 +274,23 @@
   if (_controller.menuView) {
     [_controller hideMenu:YES];
   }
+}
+
+//alexiso
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+	
+    if (
+		([tableView.dataSource respondsToSelector:@selector(tableView:titleForHeaderInSection:)]) && 
+		[tableView.dataSource tableView:tableView titleForHeaderInSection:section] != nil) {
+        return 35;
+    }
+    else {
+        // If no section header title, no section header needed
+        return 0;
+    }
 }
 
 

@@ -82,6 +82,11 @@
 - (NSComparisonResult)versionStringCompare:(NSString *)other;
 
 /**
+ * URL encodes a string
+ */
+- (NSString*)stringByURLEncodingStringParameter;
+
+/**
  * Calculate the md5 hash of this string using CC_MD5.
  *
  * @return md5 hash of this string

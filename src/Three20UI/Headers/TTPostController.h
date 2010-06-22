@@ -49,6 +49,9 @@
 @property (nonatomic, readonly) UINavigationBar*  navigatorBar;
 @property (nonatomic, retain)   UIView*           originView;
 
+//alexiso
+@property(nonatomic,retain) UIView* innerView;
+
 @property (nonatomic, assign)   id<TTPostControllerDelegate> delegate;
 
 /**

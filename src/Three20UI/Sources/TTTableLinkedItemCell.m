@@ -68,7 +68,21 @@
     if (item.URL) {
       TTNavigationMode navigationMode = [[TTNavigator navigator].URLMap
                                          navigationModeForURL:item.URL];
-      if (item.accessoryURL) {
+		/*PATCHED CODE*/
+		/*
+		 if (item.accessoryURL) { 
+		 self.accessoryType =   UITableViewCellAccessoryDetailDisclosureButton; 
+		 } else if (navigationMode == TTNavigationModeCreate ||
+		 navigationMode == TTNavigationModeShare) {
+		 } else if (navigationMode != TTNavigationModeNone) { 
+		 self.accessoryType =    UITableViewCellAccessoryDisclosureIndicator; 
+		 } else { 
+		 self.accessoryType = UITableViewCellAccessoryNone; 
+		 }
+		 */
+		/*	ORIGINAL CODE*/
+	
+	if (item.accessoryURL) {
         self.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
 
       } else if (navigationMode == TTNavigationModeCreate ||

@@ -124,6 +124,11 @@ static TTStyleSheet* gStyleSheet = nil;
   return style;
 }
 
+/*alexiso start*/
+-(void)removeStyleForKey:(NSString*)key{
+	[_styles removeObjectForKey:key];
+}
+/*alexiso end*/
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)freeMemory {

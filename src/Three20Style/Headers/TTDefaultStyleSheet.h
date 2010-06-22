@@ -42,6 +42,13 @@
 @property (nonatomic, readonly) CGSize    tableHeaderShadowOffset;
 @property (nonatomic, readonly) UIColor*  tableHeaderTintColor;
 
+//alexiso:start
+@property(nonatomic,readonly) UIColor* tableHeaderGroupedTextColor;
+@property(nonatomic,readonly) UIColor* tableHeaderGroupedShadowColor;
+@property(nonatomic,readonly) UIColor* tableHeaderGroupedTintColor;
+@property(nonatomic,readonly) UIColor* tableViewBackgroundColor;
+//alexiso:end
+
 // Photo Captions
 @property (nonatomic, readonly) UIColor*  photoCaptionTextColor;
 @property (nonatomic, readonly) UIColor*  photoCaptionTextShadowColor;

@@ -86,7 +86,7 @@
   if (!formatter) {
     formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat =
-      TTLocalizedString(@"EEEE, LLLL d, YYYY", @"Date format: Monday, July 27, 2009");
+      TTLocalizedString(@"EEEE, MMMM d, YYYY", @"Date format: Monday, July 27, 2009");
     formatter.locale = TTCurrentLocale();
   }
   return [formatter stringFromDate:self];
@@ -250,5 +250,29 @@
   return [formatter stringFromDate:self];
 }
 
+//alexiso start
 
+- (NSDate*)UTCToLocal {
+	
+	NSTimeZone* sourceTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+	NSTimeZone* destinationTimeZone = [NSTimeZone systemTimeZone];
+	
+	NSInteger sourceGMTOffset = [sourceTimeZone secondsFromGMTForDate:self];
+	NSInteger destinationGMTOffset = [destinationTimeZone secondsFromGMTForDate:self];
+	NSTimeInterval interval = destinationGMTOffset - sourceGMTOffset;
+	
+	NSDate* destinationDate = [[[NSDate alloc] initWithTimeInterval:interval sinceDate:self] autorelease];
+	return destinationDate;
+}
+
+
+-(NSDate*)dateFromUTCString:(NSString*)UTCString{
+	static NSDateFormatter* formatter = nil;
+	if (!formatter) {
+		formatter = [[NSDateFormatter alloc] init];
+		[formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+	}
+	return [formatter dateFromString:UTCString];
+}
+//alexiso end
 @end

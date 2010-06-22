@@ -83,4 +83,24 @@
  */
 - (NSString*)formatYear;
 
+/*alexiso additions*/
+/**
+ * Converts a UTC datetime to Local date time.
+ */
+- (NSDate*)UTCToLocal;
+
+/**
+ * Returns a date from a UTC string
+ */
+-(NSDate*)dateFromUTCString:(NSString*)UTCString;
+
+@end
+
+/*alexis date formatter additions*/
+@interface NSDateFormatter (TTCategory)
+/**
+ * Returns a date from a UTC string
+ */
+- (NSDate*)dateFromUTCString;
+
 @end

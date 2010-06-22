@@ -29,6 +29,10 @@
 - (TTStyle*)styleWithSelector:(NSString*)selector;
 - (TTStyle*)styleWithSelector:(NSString*)selector forState:(UIControlState)state;
 
+/*alexiso start*/
+-(void)removeStyleForKey:(NSString*)key;
+/*alexiso end*/
+
 - (void)freeMemory;
 
 @end

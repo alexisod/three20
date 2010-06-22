@@ -222,6 +222,18 @@ static NSString* kNavigatorHistoryImportantKey  = @"TTNavigatorHistoryImportant"
 
     } else {
       UIViewController* parent = self.topViewController;
+		//alexiso
+		// v--- from here DNF: alexis attempt to fix situation where MORE controller is visible
+		// http://groups.google.com/group/three20/browse_thread/thread/af2c5890e5e03fc1/2aa613e3d54c7d67?lnk=gst&q=more+tab#2aa613e3d54c7d67
+		if ([parent isKindOfClass:[UINavigationController class]]) { 
+			if (parent.parentViewController != nil) 
+				parent = parent.parentViewController; 
+			if ([parent isKindOfClass:[UITabBarController class]]) { 
+				parent = [(UITabBarController*)parent 
+						  moreNavigationController]; 
+			} 
+		} 
+		// ^---- to here 		
       if (parent != controller) {
         return parent;
 
