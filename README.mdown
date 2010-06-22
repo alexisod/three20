@@ -165,3 +165,6 @@ Learn more at [Three20.info][]
 [TTTextEditor]: http://github.com/facebook/three20/blob/master/src/Three20UI/Headers/TTTextEditor.h
 [TTPickerTextField]: http://github.com/facebook/three20/blob/master/src/Three20UI/Headers/TTPickerTextField.h
 [TTNavigator]: http://github.com/facebook/three20/blob/master/src/Three20UI/Headers/TTNavigator.h
+
+[alexis]
+This was added by alexis in an attempt to check out git versioning system
