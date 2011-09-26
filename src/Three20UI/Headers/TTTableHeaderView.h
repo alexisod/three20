@@ -20,6 +20,8 @@
 @interface TTTableHeaderView : TTView {
   UILabel* _label;
 }
+//alexisi
+@property (nonatomic,retain) UILabel* label;
 
 - (id)initWithTitle:(NSString*)title;
 - (id)initWithTitleForGroup:(NSString*)title;

@@ -66,7 +66,7 @@
       image = [UIImage imageWithData:data];
     }
 
-    if (nil != image) {
+    if (nil != image ||1==1) { //alexiso: experimental taking into account comments above (this did not cache css files)
       if (!request.respondedFromCache) {
 // XXXjoe Working on option to scale down really large images to a smaller size to save memory
 //        if (image.size.width * image.size.height > (300*300)) {
@@ -81,6 +81,7 @@
       _image = [image retain];
 
     } else {
+	
       return [NSError errorWithDomain:TT_ERROR_DOMAIN code:TT_EC_INVALID_IMAGE
                       userInfo:nil];
     }

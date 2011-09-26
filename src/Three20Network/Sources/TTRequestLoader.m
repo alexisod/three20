@@ -277,6 +277,14 @@ static const NSInteger kLoadMaxRetries = 2;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSHTTPURLResponse*)response {
   _response = [response retain];
+	
+
+	//alexiso 20110811
+	if (![response respondsToSelector:@selector(allHeaderFields)] || ![[[response allHeaderFields] objectForKey:@"Content-Length"] length]){
+		//[self cancel];
+		 _responseData = [[NSMutableData alloc] initWithCapacity:0];
+		return;
+	}
   NSDictionary* headers = [response allHeaderFields];
   int contentLength = [[headers objectForKey:@"Content-Length"] intValue];
 
@@ -309,7 +317,7 @@ static const NSInteger kLoadMaxRetries = 2;
   return nil;
 }
 
-
+ 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)           connection: (NSURLConnection *)connection
               didSendBodyData: (NSInteger)bytesWritten

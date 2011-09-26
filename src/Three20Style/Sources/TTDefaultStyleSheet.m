@@ -854,7 +854,14 @@
 	return [UIColor groupTableViewBackgroundColor];
 }
 
+// added for cyfootball compativility (was in previous version of three20)
+// hope it doesnt mess with others
+- (UIColor*)tableSeparatorColor {
+	return [UIColor colorWithWhite:0.9 alpha:1];
+}
+
 //alexiso:end
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

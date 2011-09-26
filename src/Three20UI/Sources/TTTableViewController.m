@@ -435,9 +435,11 @@ static const CGFloat kBannerViewHeight = 22;
       ? [_dataSource titleForLoading:NO]
       : [self defaultTitleForLoading];
       if (title.length) {
-        TTActivityLabel* label = [[[TTActivityLabel alloc] initWithStyle:TTActivityLabelStyleWhiteBox]
-                                  autorelease];
-        label.text = title;
+        //alexiso
+		  //TTActivityLabel* label = [[[TTActivityLabel alloc] initWithStyle:TTActivityLabelStyleWhiteBox] autorelease];
+		  TTActivityLabel* label = [[[TTActivityLabel alloc] initWithStyle:TTActivityLabelStyleBlackBanner] autorelease];
+
+	  label.text = title;
         label.backgroundColor = _tableView.backgroundColor;
         self.loadingView = label;
       }

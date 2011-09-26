@@ -272,7 +272,13 @@
 		formatter = [[NSDateFormatter alloc] init];
 		[formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
 	}
-	return [formatter dateFromString:UTCString];
+	if([UTCString length]>=19){
+		return [formatter dateFromString:[UTCString substringToIndex:19]];
+	}else{
+		return [formatter dateFromString:UTCString];
+	}
 }
+
+
 //alexiso end
 @end

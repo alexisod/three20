@@ -265,8 +265,10 @@ static const CGFloat kDesiredTableHeight = 150;
     id object = [_dataSource tableView:tableView objectForRowAtIndexPath:indexPath];
     UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     if (cell.selectionStyle != UITableViewCellSeparatorStyleNone) {
-      [_internal.delegate performSelector:@selector(textField:didSelectObject:) withObject:self
-                          withObject:object];
+		[_internal.delegate performSelector:@selector(textField:didSelectObject:) withObject:self withObject:object];
+		//alexiso
+		//[_internal.delegate performSelector:@selector(tableView:didSelectObject:indexPath:) withObject:tableView withObject:object withObject:indexPath];
+
     }
   }
 }
@@ -412,7 +414,8 @@ static const CGFloat kDesiredTableHeight = 150;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)showSearchResults:(BOOL)show {
-  if (show && _dataSource) {
+
+	if (show && _dataSource) {
     self.tableView;
 
     if (!_shadowView) {
@@ -423,7 +426,7 @@ static const CGFloat kDesiredTableHeight = 150;
     }
 
     if (!_tableView.superview) {
-      _tableView.frame = [self rectForSearchResults:YES];
+      _tableView.frame = [self rectForSearchResults:NO]; //alexiso YES to NO because we are removing the keyboard
       _shadowView.frame = CGRectMake(_tableView.left, _tableView.top-1,
                                      _tableView.width, kShadowHeight);
 
@@ -462,6 +465,7 @@ static const CGFloat kDesiredTableHeight = 150;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (CGRect)rectForSearchResults:(BOOL)withKeyboard {
+  return CGRectZero;//alexiso disable this altogether! our actual datatable is showing end results!
   UIView* superview = self.superviewForSearchResults;
 
   CGFloat y = 0;
@@ -473,8 +477,7 @@ static const CGFloat kDesiredTableHeight = 150;
 
   CGFloat height = self.height;
   CGFloat keyboardHeight = withKeyboard ? TTKeyboardHeight() : 0;
-  CGFloat tableHeight = self.window.height - (self.ttScreenY + height + keyboardHeight);
-
+  CGFloat tableHeight = self.window.height - (self.ttScreenY + height*2 + keyboardHeight); //alexiso height -> height*2
   return CGRectMake(0, y + self.height-1, superview.frame.size.width, tableHeight+1);
 }
 

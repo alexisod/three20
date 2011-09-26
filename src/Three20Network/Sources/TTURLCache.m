@@ -65,8 +65,8 @@ static NSMutableDictionary* gNamedCaches = nil;
     _invalidationAge  = TT_DEFAULT_CACHE_INVALIDATION_AGE;
 
     // XXXjoe Disabling the built-in cache may save memory but it also makes UIWebView slow
-    // NSURLCache* sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0 diskCapacity:0
-    // diskPath:nil];
+    // NSURLCache* sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0 diskCapacity:10*1024*1024
+    // diskPath:_cachePath];
     // [NSURLCache setSharedURLCache:sharedCache];
     // [sharedCache release];
 

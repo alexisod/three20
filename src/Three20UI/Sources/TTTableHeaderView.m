@@ -32,6 +32,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation TTTableHeaderView
 
+@synthesize label=_label; //alexiso
+
 //alexiso
 - (id)initWithTitleForGroup:(NSString*)title {
 	if (self = [super init]) {
@@ -67,7 +69,6 @@
   if (self = [super init]) {
     self.backgroundColor = [UIColor clearColor];
     self.style = TTSTYLE(tableHeader);
-
     _label = [[UILabel alloc] init];
     _label.text = title;
     _label.backgroundColor = [UIColor clearColor];
@@ -79,7 +80,9 @@
                          : [UIColor clearColor];
     _label.shadowOffset = TTSTYLEVAR(tableHeaderShadowOffset);
     _label.font = TTSTYLEVAR(tableHeaderPlainFont);
+	  
     [self addSubview:_label];
+	
   }
 
   return self;
@@ -103,6 +106,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)layoutSubviews {
   _label.frame = CGRectMake(12, 0, self.width, self.height);
+	
 }
 
 

@@ -47,8 +47,9 @@
 @property(nonatomic,readonly) UIColor* tableHeaderGroupedShadowColor;
 @property(nonatomic,readonly) UIColor* tableHeaderGroupedTintColor;
 @property(nonatomic,readonly) UIColor* tableViewBackgroundColor;
+@property(nonatomic,readonly) UIColor* tableSeparatorColor;
 //alexiso:end
-
+	
 // Photo Captions
 @property (nonatomic, readonly) UIColor*  photoCaptionTextColor;
 @property (nonatomic, readonly) UIColor*  photoCaptionTextShadowColor;

@@ -62,7 +62,7 @@
 		6EE737721184A38F00A35176 /* TTStyledLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EE737311184A38F00A35176 /* TTStyledLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6EE737731184A38F00A35176 /* TTStyledLineBreakNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EE737321184A38F00A35176 /* TTStyledLineBreakNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6EE737751184A38F00A35176 /* TTStyledNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EE737341184A38F00A35176 /* TTStyledNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6EE737761184A38F00A35176 /* TTStyledNodeInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EE737351184A38F00A35176 /* TTStyledNodeInternal.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		6EE737761184A38F00A35176 /* TTStyledNodeInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EE737351184A38F00A35176 /* TTStyledNodeInternal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6EE737771184A38F00A35176 /* TTStyledText.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EE737361184A38F00A35176 /* TTStyledText.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6EE737781184A38F00A35176 /* TTStyledTextDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EE737371184A38F00A35176 /* TTStyledTextDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6EE737791184A38F00A35176 /* TTStyledTextFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EE737381184A38F00A35176 /* TTStyledTextFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -736,6 +736,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EE737761184A38F00A35176 /* TTStyledNodeInternal.h in Headers */,
 				6EE737441184A38F00A35176 /* TTBevelBorderStyle.h in Headers */,
 				6EE737451184A38F00A35176 /* TTBlendStyle.h in Headers */,
 				6EE737461184A38F00A35176 /* TTBoxStyle.h in Headers */,
@@ -762,7 +763,6 @@
 				6EE7375B1184A38F00A35176 /* TTRoundedRightArrowShape.h in Headers */,
 				6EE7375C1184A38F00A35176 /* TTShadowStyle.h in Headers */,
 				6EE7375D1184A38F00A35176 /* TTShape.h in Headers */,
-				6EE7375E1184A38F00A35176 /* TTShapeInternal.h in Headers */,
 				6EE7375F1184A38F00A35176 /* TTShapeStyle.h in Headers */,
 				6EE737601184A38F00A35176 /* TTSolidBorderStyle.h in Headers */,
 				6EE737611184A38F00A35176 /* TTSolidFillStyle.h in Headers */,
@@ -772,7 +772,6 @@
 				6EE737651184A38F00A35176 /* TTStyledBlock.h in Headers */,
 				6EE737661184A38F00A35176 /* TTStyledBoldNode.h in Headers */,
 				6EE737671184A38F00A35176 /* TTStyledBoxFrame.h in Headers */,
-				6EE737691184A38F00A35176 /* TTStyleDelegate.h in Headers */,
 				6EE7376A1184A38F00A35176 /* TTStyledElement.h in Headers */,
 				6EE7376B1184A38F00A35176 /* TTStyledFrame.h in Headers */,
 				6EE7376C1184A38F00A35176 /* TTStyledImageFrame.h in Headers */,
@@ -784,13 +783,11 @@
 				6EE737721184A38F00A35176 /* TTStyledLayout.h in Headers */,
 				6EE737731184A38F00A35176 /* TTStyledLineBreakNode.h in Headers */,
 				6EE737751184A38F00A35176 /* TTStyledNode.h in Headers */,
-				6EE737761184A38F00A35176 /* TTStyledNodeInternal.h in Headers */,
 				6EE737771184A38F00A35176 /* TTStyledText.h in Headers */,
 				6EE737781184A38F00A35176 /* TTStyledTextDelegate.h in Headers */,
 				6EE737791184A38F00A35176 /* TTStyledTextFrame.h in Headers */,
 				6EE7377B1184A38F00A35176 /* TTStyledTextNode.h in Headers */,
 				6EE7377C1184A38F00A35176 /* TTStyledTextParser.h in Headers */,
-				6EE7377F1184A38F00A35176 /* TTStyleInternal.h in Headers */,
 				6EE737801184A38F00A35176 /* TTStyleSheet.h in Headers */,
 				6EE737811184A38F00A35176 /* TTTextStyle.h in Headers */,
 				6EE737821184A38F00A35176 /* UIColorAdditions.h in Headers */,
@@ -801,6 +798,9 @@
 				6E6464041187F5CB00F08CB1 /* TTStyledButtonNode.h in Headers */,
 				6E6464051187F5CB00F08CB1 /* TTStyledLinkNode.h in Headers */,
 				6E850F0911B0FE200071A4FD /* TTDefaultStyleSheet+DragRefreshHeader.h in Headers */,
+				6EE737691184A38F00A35176 /* TTStyleDelegate.h in Headers */,
+				6EE7377F1184A38F00A35176 /* TTStyleInternal.h in Headers */,
+				6EE7375E1184A38F00A35176 /* TTShapeInternal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -858,7 +858,10 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
-				en,
+				English,
+				Japanese,
+				French,
+				German,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -1078,13 +1081,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6EE7364B11849B3D00A35176 /* Library.xcconfig */;
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = iphoneos;
 			};
 			name = Internal;
 		};
@@ -1105,6 +1110,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				PREBINDING = NO;
 				PRODUCT_NAME = UnitTests;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Internal;
@@ -1113,11 +1119,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6EE7364B11849B3D00A35176 /* Library.xcconfig */;
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -1128,7 +1137,10 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
+				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -1181,6 +1193,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				PREBINDING = NO;
 				PRODUCT_NAME = UnitTests;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -1201,6 +1214,7 @@
 				HEADER_SEARCH_PATHS = .;
 				PREBINDING = NO;
 				PRODUCT_NAME = UnitTests;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};

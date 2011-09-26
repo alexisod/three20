@@ -89,7 +89,7 @@
  * drawing ourselves.
  */
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-  if (tableView.style == UITableViewStylePlain && TTSTYLEVAR(tableHeaderTintColor)) {
+  if (tableView.style == UITableViewStylePlain && (TTSTYLEVAR(tableHeaderTintColor))) {
     if ([tableView.dataSource respondsToSelector:@selector(tableView:titleForHeaderInSection:)]) {
       NSString* title = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
       if (title.length > 0) {
@@ -183,8 +183,9 @@
       }
     }
   }
-
-  [_controller didSelectObject:object atIndexPath:indexPath];
+	
+	[_controller didSelectObject:object atIndexPath:indexPath];
+	
 }
 
 
@@ -214,7 +215,9 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
-  [TTURLRequestQueue mainQueue].suspended = YES;
+  //alexiso 20110403 dont mind if loading images while scrolling 
+  //[TTURLRequestQueue mainQueue].suspended = YES;
+    [TTURLRequestQueue mainQueue].suspended = NO;
   return YES;
 }
 
@@ -235,8 +238,9 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-  [TTURLRequestQueue mainQueue].suspended = YES;
-
+  //alexiso 20110403 dont mind if loading images while scrolling 
+    [TTURLRequestQueue mainQueue].suspended = YES;
+    //[TTURLRequestQueue mainQueue].suspended = NO;
   [_controller didBeginDragging];
 
   if ([scrollView isKindOfClass:[TTTableView class]]) {
@@ -285,7 +289,11 @@
     if (
 		([tableView.dataSource respondsToSelector:@selector(tableView:titleForHeaderInSection:)]) && 
 		[tableView.dataSource tableView:tableView titleForHeaderInSection:section] != nil) {
-        return 35;
+		if(tableView.style == UITableViewStyleGrouped){
+			return 35;
+		}else{
+			return 25;
+		}
     }
     else {
         // If no section header title, no section header needed

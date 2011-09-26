@@ -34,7 +34,7 @@
 		6EE7362F11849A4000A35176 /* TTURLRequestQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7362711849A4000A35176 /* TTURLRequestQueue.m */; };
 		6EE7363A11849A9800A35176 /* MockModelDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7363911849A9800A35176 /* MockModelDelegate.m */; };
 		6EE7363C11849AA100A35176 /* NetworkModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7363B11849AA100A35176 /* NetworkModelTests.m */; };
-		6EE7364911849B1D00A35176 /* Three20Network_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 6EE7364811849B1D00A35176 /* Three20Network_Prefix.pch */; };
+		6EE7364911849B1D00A35176 /* Three20Network_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 6EE7364811849B1D00A35176 /* Three20Network_Prefix.pch */; settings = {ATTRIBUTES = (Public, ); }; };
 		6EE736C811849FAB00A35176 /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE7366C11849C5800A35176 /* libThree20Core.a */; };
 		6EE739CD1184BAF600A35176 /* libThree20Network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF31F3A0F352DF5000DE5D2 /* libThree20Network.a */; };
 		6EF96405118EFCF0003902E7 /* TTURLRequestQueueInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EF96404118EFCF0003902E7 /* TTURLRequestQueueInternal.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -334,12 +334,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EE7364911849B1D00A35176 /* Three20Network_Prefix.pch in Headers */,
 				6EE735F8118499D300A35176 /* Three20Network.h in Headers */,
 				6EE735FA118499FB00A35176 /* TTGlobalNetwork.h in Headers */,
 				6EE7360211849A1F00A35176 /* TTUserInfo.h in Headers */,
 				6EE7361411849A3500A35176 /* TTModel.h in Headers */,
 				6EE7361511849A3500A35176 /* TTModelDelegate.h in Headers */,
-				6EE7361611849A3500A35176 /* TTRequestLoader.h in Headers */,
 				6EE7361711849A3500A35176 /* TTURLCache.h in Headers */,
 				6EE7361811849A3500A35176 /* TTURLDataResponse.h in Headers */,
 				6EE7361911849A3500A35176 /* TTURLImageResponse.h in Headers */,
@@ -349,8 +349,8 @@
 				6EE7361D11849A3500A35176 /* TTURLRequestModel.h in Headers */,
 				6EE7361E11849A3500A35176 /* TTURLRequestQueue.h in Headers */,
 				6EE7361F11849A3500A35176 /* TTURLResponse.h in Headers */,
-				6EE7364911849B1D00A35176 /* Three20Network_Prefix.pch in Headers */,
 				6EF96405118EFCF0003902E7 /* TTURLRequestQueueInternal.h in Headers */,
+				6EE7361611849A3500A35176 /* TTRequestLoader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,7 +406,10 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
-				en,
+				English,
+				Japanese,
+				French,
+				German,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -549,13 +552,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6EE7364B11849B3D00A35176 /* Library.xcconfig */;
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = iphoneos;
 			};
 			name = Internal;
 		};
@@ -593,11 +598,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6EE7364B11849B3D00A35176 /* Library.xcconfig */;
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -608,7 +616,10 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
+				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -637,6 +648,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				SDKROOT = iphoneos;

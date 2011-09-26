@@ -43,7 +43,7 @@ static const NSTimeInterval kPauseInterval = 0.4;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithSearchBar:(UISearchBar*)searchBar contentsController:(UIViewController*)controller {
   if (self = [super initWithSearchBar:searchBar contentsController:controller]) {
-    self.delegate = self;
+	  self.delegate = self;
   }
 
   return self;
@@ -88,7 +88,7 @@ static const NSTimeInterval kPauseInterval = 0.4;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)searchAfterPause {
-  _pauseTimer = nil;
+	_pauseTimer = nil;
   [_searchResultsViewController.dataSource search:self.searchBar.text];
 }
 
@@ -119,7 +119,9 @@ static const NSTimeInterval kPauseInterval = 0.4;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController*)controller {
-  [_searchResultsViewController updateView];
+	//alexiso: showed no data as soon as we started typing
+	return;
+  //[_searchResultsViewController updateView];
 }
 
 
@@ -180,6 +182,8 @@ static const NSTimeInterval kPauseInterval = 0.4;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)searchDisplayController:(UISearchDisplayController*)controller
         shouldReloadTableForSearchString:(NSString*)searchString {
+	//alexiso did search while typing
+	//return NO;
   if (_pausesBeforeSearching) {
     [self restartPauseTimer];
   } else {

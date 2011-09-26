@@ -43,6 +43,7 @@
 @property (nonatomic, retain)   UIColor*        textColor;
 @property (nonatomic, retain)   UIFont*         font;
 @property (nonatomic, retain)   TTStyle*        textFieldStyle;
+
 @property (nonatomic)           UIReturnKeyType returnKeyType;
 @property (nonatomic)           CGFloat         rowHeight;
 @property (nonatomic, readonly) BOOL            editing;
@@ -55,7 +56,8 @@
 
 @property (nonatomic, retain)   id<TTTableViewDataSource> dataSource;
 @property (nonatomic, assign)   id<UITextFieldDelegate> delegate;
-
+//alexiso
+@property (nonatomic, retain)   TTButton*        cancelButton;
 - (void)search;
 
 - (void)showSearchResults:(BOOL)show;

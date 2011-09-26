@@ -19,7 +19,7 @@
 		6E3C3636118B78950079637E /* TTURLPatternText.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E3C3631118B78950079637E /* TTURLPatternText.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6E3C3641118B78F20079637E /* TTURLArguments.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E3C363F118B78F20079637E /* TTURLArguments.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6E3C3642118B78F20079637E /* TTURLArgumentType.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E3C3640118B78F20079637E /* TTURLArgumentType.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		6E3C3649118B79140079637E /* TTURLLiteral.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E3C3646118B79140079637E /* TTURLLiteral.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		6E3C3649118B79140079637E /* TTURLLiteral.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E3C3646118B79140079637E /* TTURLLiteral.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E3C364A118B79140079637E /* TTURLSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E3C3647118B79140079637E /* TTURLSelector.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6E3C364B118B79140079637E /* TTURLWildcard.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E3C3648118B79140079637E /* TTURLWildcard.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6E3C3651118B79740079637E /* TTURLGeneratorPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3C364E118B79740079637E /* TTURLGeneratorPattern.m */; };
@@ -424,6 +424,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E3C3649118B79140079637E /* TTURLLiteral.h in Headers */,
 				6E6454741184D2CD00F08CB1 /* Three20UINavigator.h in Headers */,
 				6E3C35ED118B75800079637E /* TTNavigatorDelegate.h in Headers */,
 				6E3C3614118B77FE0079637E /* TTURLAction.h in Headers */,
@@ -431,24 +432,23 @@
 				6E3C3632118B78950079637E /* TTURLGeneratorPattern.h in Headers */,
 				6E3C3633118B78950079637E /* TTURLNavigatorPattern.h in Headers */,
 				6E3C3634118B78950079637E /* TTURLPattern.h in Headers */,
-				6E3C3635118B78950079637E /* TTURLPatternInternal.h in Headers */,
-				6E3C3636118B78950079637E /* TTURLPatternText.h in Headers */,
-				6E3C3641118B78F20079637E /* TTURLArguments.h in Headers */,
-				6E3C3642118B78F20079637E /* TTURLArgumentType.h in Headers */,
-				6E3C3649118B79140079637E /* TTURLLiteral.h in Headers */,
-				6E3C364A118B79140079637E /* TTURLSelector.h in Headers */,
-				6E3C364B118B79140079637E /* TTURLWildcard.h in Headers */,
 				6E3C36C8118B7E0C0079637E /* TTURLObject.h in Headers */,
 				6E3C3754118C8E180079637E /* TTBaseNavigator.h in Headers */,
 				6E3C3759118C8E490079637E /* TTNavigatorPersistenceMode.h in Headers */,
 				6EDAE962118C99200008133C /* UIViewController+TTNavigator.h in Headers */,
 				6EDAE96C118C99C10008133C /* Three20UINavigator+Additions.h in Headers */,
 				6EDAE9EA118CA3610008133C /* TTGlobalNavigatorMetrics.h in Headers */,
-				6E86A98D118CF55D00662DA5 /* TTBaseNavigatorInternal.h in Headers */,
 				6E7F94C4118E22E400443B46 /* TTNavigationMode.h in Headers */,
 				6E7B106E11923A92001359FE /* TTNavigatorViewController.h in Headers */,
-				6E7B107011923AC1001359FE /* UIViewController+TTNavigatorGarbageCollection.h in Headers */,
 				6E6081C011B0C08600C93CD4 /* TTBaseNavigationController.h in Headers */,
+				6E86A98D118CF55D00662DA5 /* TTBaseNavigatorInternal.h in Headers */,
+				6E3C364A118B79140079637E /* TTURLSelector.h in Headers */,
+				6E3C3642118B78F20079637E /* TTURLArgumentType.h in Headers */,
+				6E3C3636118B78950079637E /* TTURLPatternText.h in Headers */,
+				6E3C3635118B78950079637E /* TTURLPatternInternal.h in Headers */,
+				6E7B107011923AC1001359FE /* UIViewController+TTNavigatorGarbageCollection.h in Headers */,
+				6E3C3641118B78F20079637E /* TTURLArguments.h in Headers */,
+				6E3C364B118B79140079637E /* TTURLWildcard.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,7 +506,10 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
-				en,
+				English,
+				Japanese,
+				French,
+				German,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -667,9 +670,11 @@
 			baseConfigurationReference = 6E64543D1184BE1B00F08CB1 /* Project.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
@@ -682,13 +687,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6EE7364B11849B3D00A35176 /* Library.xcconfig */;
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Internal;
 		};
@@ -717,11 +725,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6EE7364B11849B3D00A35176 /* Library.xcconfig */;
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -732,7 +744,11 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -742,9 +758,11 @@
 			baseConfigurationReference = 6E64543D1184BE1B00F08CB1 /* Project.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
@@ -758,9 +776,12 @@
 			baseConfigurationReference = 6E64543D1184BE1B00F08CB1 /* Project.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
@@ -821,7 +842,7 @@
 				BEF31F3C0F352DF6000DE5D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Three20UINavigator" */ = {
 			isa = XCConfigurationList;
@@ -831,7 +852,7 @@
 				C01FCF5008A954540054247B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		EB9E6C6710B6A8F900DE563C /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
 			isa = XCConfigurationList;
@@ -841,7 +862,7 @@
 				EB9E6C6610B6A8F900DE563C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
