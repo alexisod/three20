@@ -1,5 +1,5 @@
 //
-// Copyright 2009-2010 Facebook
+// Copyright 2009-2011 Facebook
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,7 +27,6 @@
   TTSearchTextField*  _searchField;
   TTView*             _boxView;
   TTButton*           _cancelButton;
-
   UIColor*            _tintColor;
   TTStyle*            _textFieldStyle;
 
@@ -56,8 +55,9 @@
 
 @property (nonatomic, retain)   id<TTTableViewDataSource> dataSource;
 @property (nonatomic, assign)   id<UITextFieldDelegate> delegate;
-//alexiso
-@property (nonatomic, retain)   TTButton*        cancelButton;
+
+@property (nonatomic, retain)   TTButton*        cancelButton; //alexiso
+
 - (void)search;
 
 - (void)showSearchResults:(BOOL)show;
