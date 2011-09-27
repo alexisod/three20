@@ -1,5 +1,5 @@
 //
-// Copyright 2009-2010 Facebook
+// Copyright 2009-2011 Facebook
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ NSLocale* TTCurrentLocale() {
 	if (1==2 && languages.count > 0) {
     NSString* currentLanguage = [languages objectAtIndex:0];
     return [[[NSLocale alloc] initWithLocaleIdentifier:currentLanguage] autorelease];
+
   } else {
     return [NSLocale currentLocale];
   }
@@ -38,7 +39,7 @@ NSLocale* TTCurrentLocale() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 NSString* TTLocalizedString(NSString* key, NSString* comment) {
   static NSBundle* bundle = nil;
-  if (!bundle) {
+  if (nil == bundle) {
     NSString* path = [[[NSBundle mainBundle] resourcePath]
           stringByAppendingPathComponent:@"Three20.bundle"];
     bundle = [[NSBundle bundleWithPath:path] retain];
@@ -56,8 +57,10 @@ NSString* TTDescriptionForError(NSError* error) {
     // Note: If new error codes are added here, be sure to document them in the header.
     if (error.code == NSURLErrorTimedOut) {
       return TTLocalizedString(@"Connection Timed Out", @"");
+
     } else if (error.code == NSURLErrorNotConnectedToInternet) {
       return TTLocalizedString(@"No Internet Connection", @"");
+
     } else {
       return TTLocalizedString(@"Connection Error", @"");
     }
@@ -70,9 +73,8 @@ NSString* TTDescriptionForError(NSError* error) {
 NSString* TTFormatInteger(NSInteger num) {
   NSNumber* number = [NSNumber numberWithInt:num];
   NSNumberFormatter* formatter = [[NSNumberFormatter alloc] init];
-  [formatter setNumberStyle:kCFNumberFormatterDecimalStyle];
-  [formatter setGroupingSeparator:@","];
-  NSString* formatted = [formatter stringForObjectValue:number];
+  [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+  NSString* formatted = [formatter stringFromNumber:number];
   [formatter release];
   return formatted;
 }

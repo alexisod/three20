@@ -1,5 +1,5 @@
 //
-// Copyright 2009-2010 Facebook
+// Copyright 2009-2011 Facebook
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -42,8 +42,9 @@ static const NSTimeInterval kPauseInterval = 0.4;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithSearchBar:(UISearchBar*)searchBar contentsController:(UIViewController*)controller {
-  if (self = [super initWithSearchBar:searchBar contentsController:controller]) {
-	  self.delegate = self;
+	self = [super initWithSearchBar:searchBar contentsController:controller];
+  if (self) {
+    self.delegate = self;
   }
 
   return self;
@@ -134,6 +135,7 @@ static const NSTimeInterval kPauseInterval = 0.4;
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:TT_FAST_TRANSITION_DURATION];
     backgroundView.alpha = 1;
+    _searchResultsViewController.tableOverlayView.alpha = 0;
     [UIView commitAnimations];
   }
 
@@ -186,6 +188,7 @@ static const NSTimeInterval kPauseInterval = 0.4;
 	//return NO;
   if (_pausesBeforeSearching) {
     [self restartPauseTimer];
+
   } else {
     [_searchResultsViewController.dataSource search:searchString];
   }

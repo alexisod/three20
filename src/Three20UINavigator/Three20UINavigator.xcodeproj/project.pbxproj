@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		666E16DD12944999001C1D97 /* TTNavigatorRootContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 666E16DC12944999001C1D97 /* TTNavigatorRootContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E3C35ED118B75800079637E /* TTNavigatorDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E3C35EA118B75800079637E /* TTNavigatorDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E3C3611118B77F70079637E /* TTURLAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3C3610118B77F70079637E /* TTURLAction.m */; };
 		6E3C3614118B77FE0079637E /* TTURLAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E3C3613118B77FE0079637E /* TTURLAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -19,7 +20,7 @@
 		6E3C3636118B78950079637E /* TTURLPatternText.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E3C3631118B78950079637E /* TTURLPatternText.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6E3C3641118B78F20079637E /* TTURLArguments.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E3C363F118B78F20079637E /* TTURLArguments.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6E3C3642118B78F20079637E /* TTURLArgumentType.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E3C3640118B78F20079637E /* TTURLArgumentType.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		6E3C3649118B79140079637E /* TTURLLiteral.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E3C3646118B79140079637E /* TTURLLiteral.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6E3C3649118B79140079637E /* TTURLLiteral.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E3C3646118B79140079637E /* TTURLLiteral.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6E3C364A118B79140079637E /* TTURLSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E3C3647118B79140079637E /* TTURLSelector.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6E3C364B118B79140079637E /* TTURLWildcard.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E3C3648118B79140079637E /* TTURLWildcard.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6E3C3651118B79740079637E /* TTURLGeneratorPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3C364E118B79740079637E /* TTURLGeneratorPattern.m */; };
@@ -121,6 +122,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		666E16DC12944999001C1D97 /* TTNavigatorRootContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTNavigatorRootContainer.h; path = Headers/TTNavigatorRootContainer.h; sourceTree = "<group>"; };
 		6E3C35EA118B75800079637E /* TTNavigatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTNavigatorDelegate.h; path = Headers/TTNavigatorDelegate.h; sourceTree = "<group>"; };
 		6E3C3610118B77F70079637E /* TTURLAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTURLAction.m; path = Sources/TTURLAction.m; sourceTree = "<group>"; };
 		6E3C3613118B77FE0079637E /* TTURLAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTURLAction.h; path = Headers/TTURLAction.h; sourceTree = "<group>"; };
@@ -172,7 +174,7 @@
 		6EE7364C11849B3D00A35176 /* UnitTests.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = UnitTests.xcconfig; path = Configurations/UnitTests.xcconfig; sourceTree = "<group>"; };
 		6EE7366611849C5800A35176 /* Three20Core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Core.xcodeproj; path = ../Three20Core/Three20Core.xcodeproj; sourceTree = SOURCE_ROOT; };
 		BEF31F3A0F352DF5000DE5D2 /* libThree20UINavigator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libThree20UINavigator.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB9E6C6210B6A8F800DE563C /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB9E6C6210B6A8F800DE563C /* UINavigatorUnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UINavigatorUnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,7 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				BEF31F3A0F352DF5000DE5D2 /* libThree20UINavigator.a */,
-				EB9E6C6210B6A8F800DE563C /* UnitTests.octest */,
+				EB9E6C6210B6A8F800DE563C /* UINavigatorUnitTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -320,7 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				6E3C37BA118C96A60079637E /* libThree20UICommon.a */,
-				6E3C37BC118C96A60079637E /* UnitTests.octest */,
+				6E3C37BC118C96A60079637E /* UICommonUnitTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -366,6 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				6E3C3758118C8E490079637E /* TTNavigatorPersistenceMode.h */,
+				666E16DC12944999001C1D97 /* TTNavigatorRootContainer.h */,
 				6E3C3753118C8E180079637E /* TTBaseNavigator.h */,
 				6E3C3755118C8E210079637E /* TTBaseNavigator.m */,
 				6E3C35EA118B75800079637E /* TTNavigatorDelegate.h */,
@@ -424,7 +427,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E3C3649118B79140079637E /* TTURLLiteral.h in Headers */,
 				6E6454741184D2CD00F08CB1 /* Three20UINavigator.h in Headers */,
 				6E3C35ED118B75800079637E /* TTNavigatorDelegate.h in Headers */,
 				6E3C3614118B77FE0079637E /* TTURLAction.h in Headers */,
@@ -432,23 +434,25 @@
 				6E3C3632118B78950079637E /* TTURLGeneratorPattern.h in Headers */,
 				6E3C3633118B78950079637E /* TTURLNavigatorPattern.h in Headers */,
 				6E3C3634118B78950079637E /* TTURLPattern.h in Headers */,
+				6E3C3635118B78950079637E /* TTURLPatternInternal.h in Headers */,
+				6E3C3636118B78950079637E /* TTURLPatternText.h in Headers */,
+				6E3C3641118B78F20079637E /* TTURLArguments.h in Headers */,
+				6E3C3642118B78F20079637E /* TTURLArgumentType.h in Headers */,
+				6E3C3649118B79140079637E /* TTURLLiteral.h in Headers */,
+				6E3C364A118B79140079637E /* TTURLSelector.h in Headers */,
+				6E3C364B118B79140079637E /* TTURLWildcard.h in Headers */,
 				6E3C36C8118B7E0C0079637E /* TTURLObject.h in Headers */,
 				6E3C3754118C8E180079637E /* TTBaseNavigator.h in Headers */,
 				6E3C3759118C8E490079637E /* TTNavigatorPersistenceMode.h in Headers */,
 				6EDAE962118C99200008133C /* UIViewController+TTNavigator.h in Headers */,
 				6EDAE96C118C99C10008133C /* Three20UINavigator+Additions.h in Headers */,
 				6EDAE9EA118CA3610008133C /* TTGlobalNavigatorMetrics.h in Headers */,
+				6E86A98D118CF55D00662DA5 /* TTBaseNavigatorInternal.h in Headers */,
 				6E7F94C4118E22E400443B46 /* TTNavigationMode.h in Headers */,
 				6E7B106E11923A92001359FE /* TTNavigatorViewController.h in Headers */,
-				6E6081C011B0C08600C93CD4 /* TTBaseNavigationController.h in Headers */,
-				6E86A98D118CF55D00662DA5 /* TTBaseNavigatorInternal.h in Headers */,
-				6E3C364A118B79140079637E /* TTURLSelector.h in Headers */,
-				6E3C3642118B78F20079637E /* TTURLArgumentType.h in Headers */,
-				6E3C3636118B78950079637E /* TTURLPatternText.h in Headers */,
-				6E3C3635118B78950079637E /* TTURLPatternInternal.h in Headers */,
 				6E7B107011923AC1001359FE /* UIViewController+TTNavigatorGarbageCollection.h in Headers */,
-				6E3C3641118B78F20079637E /* TTURLArguments.h in Headers */,
-				6E3C364B118B79140079637E /* TTURLWildcard.h in Headers */,
+				6E6081C011B0C08600C93CD4 /* TTBaseNavigationController.h in Headers */,
+				666E16DD12944999001C1D97 /* TTNavigatorRootContainer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +466,7 @@
 				BEF31F360F352DF5000DE5D2 /* Headers */,
 				6E645F461187B01F00F08CB1 /* Protect Copied Headers */,
 				BEF31F370F352DF5000DE5D2 /* Sources */,
+				668E661D131ADFEA00ACE4AB /* Lint */,
 				BEF31F380F352DF5000DE5D2 /* Frameworks */,
 			);
 			buildRules = (
@@ -475,9 +480,9 @@
 			productReference = BEF31F3A0F352DF5000DE5D2 /* libThree20UINavigator.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		EB9E6C6110B6A8F800DE563C /* UnitTests */ = {
+		EB9E6C6110B6A8F800DE563C /* Three20UINavigatorUnitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EB9E6C6710B6A8F900DE563C /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildConfigurationList = EB9E6C6710B6A8F900DE563C /* Build configuration list for PBXNativeTarget "Three20UINavigatorUnitTests" */;
 			buildPhases = (
 				EB9E6C5D10B6A8F800DE563C /* Resources */,
 				EB9E6C5E10B6A8F800DE563C /* Sources */,
@@ -491,9 +496,9 @@
 				6E3C37C1118C96CB0079637E /* PBXTargetDependency */,
 				6EE736C711849FA000A35176 /* PBXTargetDependency */,
 			);
-			name = UnitTests;
+			name = Three20UINavigatorUnitTests;
 			productName = CoreUnitTests;
-			productReference = EB9E6C6210B6A8F800DE563C /* UnitTests.octest */;
+			productReference = EB9E6C6210B6A8F800DE563C /* UINavigatorUnitTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -501,6 +506,9 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Three20UINavigator" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
@@ -526,7 +534,7 @@
 			projectRoot = "";
 			targets = (
 				BEF31F390F352DF5000DE5D2 /* Three20UINavigator */,
-				EB9E6C6110B6A8F800DE563C /* UnitTests */,
+				EB9E6C6110B6A8F800DE563C /* Three20UINavigatorUnitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -539,10 +547,10 @@
 			remoteRef = 6E3C37B9118C96A60079637E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		6E3C37BC118C96A60079637E /* UnitTests.octest */ = {
+		6E3C37BC118C96A60079637E /* UICommonUnitTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = UnitTests.octest;
+			path = UICommonUnitTests.octest;
 			remoteRef = 6E3C37BB118C96A60079637E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -573,6 +581,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		668E661D131ADFEA00ACE4AB /* Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Lint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/bin/env python ../scripts/lint";
+			shellScript = "";
+			showEnvVarsInLog = 0;
+		};
 		6E645F461187B01F00F08CB1 /* Protect Copied Headers */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -669,17 +692,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6E64543D1184BE1B00F08CB1 /* Project.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 			};
 			name = Internal;
 		};
@@ -687,16 +705,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6EE7364B11849B3D00A35176 /* Library.xcconfig */;
 			buildSettings = {
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
-				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 			};
 			name = Internal;
 		};
@@ -704,19 +721,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6EE7364C11849B3D00A35176 /* UnitTests.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				PREBINDING = NO;
-				PRODUCT_NAME = UnitTests;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Internal;
@@ -725,15 +739,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6EE7364B11849B3D00A35176 /* Library.xcconfig */;
 			buildSettings = {
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
-				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -744,11 +755,8 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
-				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -757,17 +765,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6E64543D1184BE1B00F08CB1 /* Project.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -775,17 +778,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6E64543D1184BE1B00F08CB1 /* Project.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -793,19 +791,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6EE7364C11849B3D00A35176 /* UnitTests.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				PREBINDING = NO;
-				PRODUCT_NAME = UnitTests;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -814,18 +808,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6EE7364C11849B3D00A35176 /* UnitTests.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				HEADER_SEARCH_PATHS = .;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				PREBINDING = NO;
-				PRODUCT_NAME = UnitTests;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
@@ -842,7 +831,7 @@
 				BEF31F3C0F352DF6000DE5D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Three20UINavigator" */ = {
 			isa = XCConfigurationList;
@@ -852,9 +841,9 @@
 				C01FCF5008A954540054247B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
-		EB9E6C6710B6A8F900DE563C /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+		EB9E6C6710B6A8F900DE563C /* Build configuration list for PBXNativeTarget "Three20UINavigatorUnitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EB9E6C6510B6A8F900DE563C /* Debug */,
@@ -862,7 +851,7 @@
 				EB9E6C6610B6A8F900DE563C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

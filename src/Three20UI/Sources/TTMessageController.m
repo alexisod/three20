@@ -1,5 +1,5 @@
 //
-// Copyright 2009-2010 Facebook
+// Copyright 2009-2011 Facebook
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -43,6 +43,7 @@
 #import "Three20Core/TTGlobalCoreLocale.h"
 #import "Three20Core/TTGlobalCoreRects.h"
 #import "Three20Core/NSStringAdditions.h"
+#import "Three20Core/TTGlobalCore.h"
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -50,16 +51,18 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation TTMessageController
 
-@synthesize fields                = _fields;
-@synthesize isModified            = _isModified;
-@synthesize showsRecipientPicker  = _showsRecipientPicker;
-@synthesize dataSource            = _dataSource;
-@synthesize delegate              = _delegate;
+@synthesize fields                      = _fields;
+@synthesize isModified                  = _isModified;
+@synthesize showsRecipientPicker        = _showsRecipientPicker;
+@synthesize requireNonEmptyMessageBody  = _requireNonEmptyMessageBody;
+@synthesize dataSource                  = _dataSource;
+@synthesize delegate                    = _delegate;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-  if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+  if (self) {
     _fields = [[NSArray alloc] initWithObjects:
                [[[TTMessageRecipientField alloc] initWithTitle: TTLocalizedString(@"To:", @"")
                                                       required: YES] autorelease],
@@ -88,17 +91,9 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithRecipients:(NSArray*)recipients {
-  if (self = [self initWithNibName:nil bundle:nil]) {
+	self = [self initWithNibName:nil bundle:nil];
+  if (self) {
     _initialRecipients = [recipients retain];
-  }
-
-  return self;
-}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)init {
-  if (self = [self initWithNibName:nil bundle:nil]) {
   }
 
   return self;
@@ -173,7 +168,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)layoutViews {
-  CGFloat y = 0;
+  CGFloat y = 0.0f;
 
   for (UIView* view in _scrollView.subviews) {
     view.frame = CGRectMake(0, y, self.view.width, view.height);
@@ -197,7 +192,8 @@
 
       } else if ([field isKindOfClass:[TTMessageTextField class]]) {
         UITextField* textField = [_fieldViews objectAtIndex:i];
-        if (!textField.text.isEmptyOrWhitespace) {
+        if (TTIsStringWithAnyText(textField.text)
+            && !textField.text.isWhitespaceAndNewlines) {
           return YES;
         }
       }
@@ -210,7 +206,9 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)hasRequiredText {
-  BOOL compliant = YES;
+  if (_requireNonEmptyMessageBody && [_textEditor.text isWhitespaceAndNewlines]) {
+    return NO;
+  }
 
   for (int i = 0; i < _fields.count; ++i) {
     TTMessageField* field = [_fields objectAtIndex:i];
@@ -218,19 +216,19 @@
       if ([field isKindOfClass:[TTMessageRecipientField class]]) {
         TTPickerTextField* textField = [_fieldViews objectAtIndex:i];
         if (!textField.cells.count) {
-          compliant = NO;
+          return NO;
         }
 
       } else if ([field isKindOfClass:[TTMessageTextField class]]) {
         UITextField* textField = [_fieldViews objectAtIndex:i];
-        if (textField.text.isEmptyOrWhitespace) {
-          compliant = NO;
+        if (0 == textField.text.length || textField.text.isWhitespaceAndNewlines) {
+          return NO;
         }
       }
     }
   }
 
-  return compliant && _textEditor.text.length;
+  return YES;
 }
 
 
@@ -400,6 +398,7 @@
     id data = [field persistField:view];
     if (data) {
       [fields addObject:data];
+
     } else {
       [fields addObject:@""];
     }
@@ -628,6 +627,7 @@
   NSString* text = nil;
   if (fieldIndex == _fieldViews.count) {
     text = _textEditor.text;
+
   } else {
     TTPickerTextField* textField = [_fieldViews objectAtIndex:fieldIndex];
     if ([textField isKindOfClass:[TTPickerTextField class]]) {
@@ -645,6 +645,7 @@
   self.view;
   if (fieldIndex == _fieldViews.count) {
     _textEditor.text = text;
+
   } else {
     TTPickerTextField* textField = [_fieldViews objectAtIndex:fieldIndex];
     if ([textField isKindOfClass:[TTPickerTextField class]]) {
@@ -660,14 +661,19 @@
 
   if (fieldIndex == _fieldViews.count) {
     return _textEditor.text.length > 0;
+
   } else {
     TTMessageField* field = [_fields objectAtIndex:fieldIndex];
     if ([field isKindOfClass:[TTMessageRecipientField class]]) {
       TTPickerTextField* pickerTextField = [_fieldViews objectAtIndex:fieldIndex];
-      return !pickerTextField.text.isEmptyOrWhitespace || pickerTextField.cellViews.count > 0;
+      return (TTIsStringWithAnyText(pickerTextField.text)
+              && !pickerTextField.text.isWhitespaceAndNewlines)
+              || pickerTextField.cellViews.count > 0;
+
     } else {
       UITextField* textField = [_fieldViews objectAtIndex:fieldIndex];
-      return !textField.text.isEmptyOrWhitespace;
+      return (TTIsStringWithAnyText(textField.text)
+              && !textField.text.isWhitespaceAndNewlines);
     }
   }
 }
@@ -679,6 +685,7 @@
 
   if (fieldIndex == _fieldViews.count) {
     return _textEditor;
+
   } else {
     return [_fieldViews objectAtIndex:fieldIndex];
   }
@@ -693,6 +700,7 @@
     if ([field isKindOfClass:[TTMessageRecipientField class]]) {
       TTPickerTextField* textField = [_fieldViews objectAtIndex:i];
       [(TTMessageRecipientField*)field setRecipients:textField.cells];
+
     } else if ([field isKindOfClass:[TTMessageTextField class]]) {
       UITextField* textField = [_fieldViews objectAtIndex:i];
       [(TTMessageTextField*)field setText:textField.text];
@@ -720,6 +728,7 @@
 - (void)cancel:(BOOL)confirmIfNecessary {
   if (confirmIfNecessary && ![self messageShouldCancel]) {
     [self confirmCancellation];
+
   } else {
     if ([_delegate respondsToSelector:@selector(composeControllerWillCancel:)]) {
       [_delegate composeControllerWillCancel:self];
@@ -754,6 +763,7 @@
       _activityView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
       [self.view addSubview:_activityView];
     }
+
   } else {
     [_activityView removeFromSuperview];
     TT_RELEASE_SAFELY(_activityView);

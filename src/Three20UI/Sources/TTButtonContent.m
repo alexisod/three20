@@ -1,5 +1,5 @@
 //
-// Copyright 2009-2010 Facebook
+// Copyright 2009-2011 Facebook
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,7 +14,13 @@
 // limitations under the License.
 //
 
-#import "Three20UI/TTButtonContent.h"
+#import "Three20UI/private/TTButtonContent.h"
+
+// Style
+#import "Three20Style/TTImageStyle.h"
+
+// UI
+#import "Three20UI/TTImageViewDelegate.h"
 
 // Network
 #import "Three20Network/TTURLImageResponse.h"
@@ -34,11 +40,13 @@
 @synthesize imageURL  = _imageURL;
 @synthesize image     = _image;
 @synthesize style     = _style;
+@synthesize delegate  = _delegate;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithButton:(TTButton*)button {
-  if (self = [super init]) {
+	self = [super init];
+  if (self) {
     _button = button;
   }
   return self;
@@ -53,6 +61,7 @@
   TT_RELEASE_SAFELY(_imageURL);
   TT_RELEASE_SAFELY(_image);
   TT_RELEASE_SAFELY(_style);
+  self.delegate = nil;
 
   [super dealloc];
 }
@@ -68,6 +77,10 @@
 - (void)requestDidStartLoad:(TTURLRequest*)request {
   [_request release];
   _request = [request retain];
+
+  if ([_delegate respondsToSelector:@selector(imageViewDidStartLoad:)]) {
+    [_delegate imageViewDidStartLoad:nil];
+  }
 }
 
 
@@ -78,12 +91,20 @@
   [_button setNeedsDisplay];
 
   TT_RELEASE_SAFELY(_request);
+
+  if ([_delegate respondsToSelector:@selector(imageView:didLoadImage:)]) {
+    [_delegate imageView:nil didLoadImage:response.image];
+  }
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
   TT_RELEASE_SAFELY(_request);
+
+  if ([_delegate respondsToSelector:@selector(imageView:didFailLoadWithError:)]) {
+    [_delegate imageView:nil didFailLoadWithError:error];
+  }
 }
 
 
@@ -125,7 +146,17 @@
     if (image) {
       self.image = image;
       [_button setNeedsDisplay];
+
+      if ([_delegate respondsToSelector:@selector(imageView:didLoadImage:)]) {
+        [_delegate imageView:nil didLoadImage:image];
+      }
+
     } else {
+      TTImageStyle* imageStyle = [_style firstStyleOfClass:[TTImageStyle class]];
+      if (imageStyle && imageStyle.defaultImage) {
+        self.image = imageStyle.defaultImage;
+      }
+
       TTURLRequest* request = [TTURLRequest requestWithURL:_imageURL delegate:self];
       request.response = [[[TTURLImageResponse alloc] init] autorelease];
       [request send];

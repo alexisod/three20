@@ -1,5 +1,5 @@
 //
-// Copyright 2009-2010 Facebook
+// Copyright 2009-2011 Facebook
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -70,6 +70,16 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
++ (id)itemWithText:(NSString*)text delegate:(id)delegate selector:(SEL)selector {
+  TTTableTextItem* item = [[[self alloc] init] autorelease];
+  item.text = text;
+  item.delegate = delegate;
+  item.selector = selector;
+  return item;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
 #pragma mark NSCoding
@@ -77,7 +87,8 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithCoder:(NSCoder*)decoder {
-  if (self = [super initWithCoder:decoder]) {
+	self = [super initWithCoder:decoder];
+  if (self) {
     self.text = [decoder decodeObjectForKey:@"text"];
   }
   return self;

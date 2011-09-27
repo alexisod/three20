@@ -1,5 +1,5 @@
 //
-// Copyright 2009-2010 Facebook
+// Copyright 2009-2011 Facebook
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -45,6 +45,11 @@
 
 //alexiso
 #import "Three20UICommon/TTGlobalUICommon.h"
+static const CGFloat kEmptyHeaderHeight = 0.0f;
+static const CGFloat kSectionHeaderHeight = 22.0f;
+static const CGFloat kGroupedSectionHeaderHeight = 36.0f;
+static const CGFloat kGroupedSectionFirstHeaderHeight = 36.0f + 10.0f;
+static const NSUInteger kFirstTableSection = 0;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -62,7 +67,8 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithController:(TTTableViewController*)controller {
-  if (self = [super init]) {
+  self = [super init];
+  if (self) {
     _controller = controller;
   }
   return self;
@@ -94,7 +100,15 @@
       NSString* title = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
       if (title.length > 0) {
         TTTableHeaderView* header = [_headers objectForKey:title];
-        if (nil == header) {
+
+        // If retrieved from cache, prepare for reuse here.
+        // We reset the the opacity to 1 because UITableView might set this property to 0 after
+        // removing it.
+        // TODO (jverkoey Feb 26, 2011): When does this happen, exactly?
+        if (nil != header) {
+          header.alpha = 1;
+
+        } else {
           if (nil == _headers) {
             _headers = [[NSMutableDictionary alloc] init];
           }
@@ -112,9 +126,9 @@
 	if (1==1 && (tableView.style == UITableViewStyleGrouped )) {
 		NSString* sectionTitle = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
 		if (sectionTitle == nil || !(sectionTitle.length)) {
-			return nil;
-		}
-		
+  return nil;
+}
+
 		// Create label with section title
 		UILabel *label = [[[UILabel alloc] init] autorelease];
 		label.frame = CGRectMake(20, 6, 300, 30);
@@ -128,7 +142,7 @@
 		label.textColor = TTSTYLEVAR(tableHeaderGroupedTextColor)
 		? TTSTYLEVAR(tableHeaderGroupedTextColor)
 		: TTSTYLEVAR(linkTextColor);		
-		
+
 		//label.shadowColor = [UIColor whiteColor];
 		label.shadowColor = TTSTYLEVAR(tableHeaderGroupedShadowColor)
 		? TTSTYLEVAR(tableHeaderGroupedShadowColor)
@@ -163,11 +177,15 @@
   if ([object isKindOfClass:[TTTableLinkedItem class]]) {
     TTTableLinkedItem* item = object;
     if (item.URL && [_controller shouldOpenURL:item.URL]) {
-      TTOpenURL(item.URL);
+      TTOpenURLFromView(item.URL, tableView);
+
+    } else if (item.delegate && item.selector) {
+      [item.delegate performSelector:item.selector withObject:object];
     }
 
     if ([object isKindOfClass:[TTTableButton class]]) {
       [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     } else if ([object isKindOfClass:[TTTableMoreButton class]]) {
       TTTableMoreButton* moreLink = (TTTableMoreButton*)object;
       moreLink.isLoading = YES;
@@ -178,13 +196,14 @@
 
       if (moreLink.model) {
         [moreLink.model load:TTURLRequestCachePolicyDefault more:YES];
+
       } else {
         [_controller.model load:TTURLRequestCachePolicyDefault more:YES];
       }
     }
   }
-	
-	[_controller didSelectObject:object atIndexPath:indexPath];
+
+  [_controller didSelectObject:object atIndexPath:indexPath];
 	
 }
 
@@ -201,7 +220,7 @@
   if ([object isKindOfClass:[TTTableLinkedItem class]]) {
     TTTableLinkedItem* item = object;
     if (item.accessoryURL && [_controller shouldOpenURL:item.accessoryURL]) {
-      TTOpenURL(item.accessoryURL);
+      TTOpenURLFromView(item.accessoryURL, tableView);
     }
   }
 }
@@ -239,7 +258,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
   //alexiso 20110403 dont mind if loading images while scrolling 
-    [TTURLRequestQueue mainQueue].suspended = YES;
+  [TTURLRequestQueue mainQueue].suspended = YES;
     //[TTURLRequestQueue mainQueue].suspended = NO;
   [_controller didBeginDragging];
 
@@ -283,23 +302,5 @@
 //alexiso
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // UITableViewDelegate
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-	
-    if (
-		([tableView.dataSource respondsToSelector:@selector(tableView:titleForHeaderInSection:)]) && 
-		[tableView.dataSource tableView:tableView titleForHeaderInSection:section] != nil) {
-		if(tableView.style == UITableViewStyleGrouped){
-			return 35;
-		}else{
-			return 25;
-		}
-    }
-    else {
-        // If no section header title, no section header needed
-        return 0;
-    }
-}
-
 
 @end
